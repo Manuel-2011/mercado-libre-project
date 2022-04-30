@@ -32,9 +32,9 @@ export default async function handler(req, res) {
 
   const categories = data.available_filters.find(
     ({ id }) => id === "category"
-  ).values;
+  )?.values;
 
-  const categoriesSortedByResults = categories.sort((a, b) => {
+  const categoriesSortedByResults = categories?.sort((a, b) => {
     if (a.results > b.results) {
       return -1;
     }
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       name: "Manuel",
       lastname: "Mosquera",
     },
-    categories: categoriesSortedByResults,
+    categories: categoriesSortedByResults || [],
     items: data.results.map((item) => ({
       id: item.id,
       title: item.title,

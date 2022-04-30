@@ -12,9 +12,7 @@ const App: FC = ({ data }) => {
 export default App;
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    "http://localhost:3001/api/items?q=escritorio el[ectrico"
-  );
+  const res = await fetch("http://localhost:3001/api/items/MLA836846987");
   const data = await res.json();
 
   return {
