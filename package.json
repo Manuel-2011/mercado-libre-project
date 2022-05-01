@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "PORT=3001 next dev",
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "Manuel Mosquera",
@@ -19,6 +19,10 @@
     "typescript": "^4.6.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "jest": "^28.0.3",
+    "jest-environment-jsdom": "^28.0.2",
     "sass": "^1.51.0"
   }
 }
