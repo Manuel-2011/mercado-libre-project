@@ -1,0 +1,26 @@
+@import '../../common/styles/variables.module.scss';
+
+.container {
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchForm {
+  display: flex;
+  flex-grow: 1;
+}
+
+.searchInput {
+  padding: 5px 10px;
+  flex-grow: 1;
+  &, &:hover, &:focus, &:focus-visible {
+    border: none;
+    outline: unset;
+  }
+}
+
+.searchSubmit {
+  border: none;
+}
