@@ -1,6 +1,7 @@
 .mainLayout {
   min-height: 100vh;
   background-color: #ebebeb;
+  overflow-y: scroll;
   & > * {
     padding-left: 100px;
     padding-right: 100px;
