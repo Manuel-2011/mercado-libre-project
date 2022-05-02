@@ -1,21 +1,25 @@
-interface Response {
+export interface Response {
   author: {
-    name: String;
-    lastname: String;
+    name: string;
+    lastname: string;
   };
   item: {
-    id: String;
-    title: String;
-    price: { currency: String; amount: Number; decimals: Number };
-    picture: String;
-    condition: String;
-    free_shipping: Boolean;
+    id: string;
+    title: string;
+    price: { currency: string; amount: number; decimals: number };
+    picture: string;
+    condition: string;
+    free_shipping: boolean;
     sold_quantity: Number;
-    description: String;
+    description: string;
   };
 }
 
-export default async function handler(req, res) {
+export interface Error {
+  error: any;
+}
+
+export default async function handler(req, res): Promise<Response | Error> {
   const { id } = req.query;
 
   let data;
