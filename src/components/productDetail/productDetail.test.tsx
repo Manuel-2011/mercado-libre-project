@@ -13,6 +13,7 @@ const testData: Response["item"] = {
   title: "product1",
   sold_quantity: 234,
   description: "This is product 1.",
+  category: null,
 };
 
 describe("ProductDetail", () => {

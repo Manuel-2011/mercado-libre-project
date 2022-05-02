@@ -12,6 +12,7 @@ export interface Response {
     free_shipping: boolean;
     sold_quantity: Number;
     description: string;
+    category: null | string;
   };
 }
 
@@ -41,6 +42,17 @@ export default async function handler(req, res): Promise<Response | Error> {
     description = "";
   }
 
+  let category;
+  try {
+    const rawResponse = await fetch(
+      `https://api.mercadolibre.com/categories/${data.category_id}`
+    );
+    category = await rawResponse.json();
+    category = category.name;
+  } catch (error) {
+    category = null;
+  }
+
   const parsedData: Response = {
     author: {
       name: "Manuel",
@@ -54,6 +66,7 @@ export default async function handler(req, res): Promise<Response | Error> {
         amount: data.price,
         decimals: data.price % 1,
       },
+      category,
       picture: data.thumbnail,
       condition: data.condition,
       free_shipping: data.shipping.free_shipping,
