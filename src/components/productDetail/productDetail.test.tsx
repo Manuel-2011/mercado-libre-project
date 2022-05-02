@@ -44,9 +44,9 @@ describe("ProductDetail", () => {
   it("renders the price", () => {
     render(<ProductDetail item={testData} />);
 
-    const price = screen.getByText("$ 12,500.99");
+    const price = screen.getByLabelText("product price");
 
-    expect(price).toBeInTheDocument();
+    expect(price).toHaveTextContent(/\$[\s]*12,500[\s]*99/);
   });
 
   it("renders the product name", () => {

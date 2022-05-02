@@ -1,0 +1,75 @@
+@import '../../common/styles//variables.module.scss';
+
+%secondaryText {
+  text-transform: capitalize;
+  color: $secondary-text;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 40px;
+}
+
+.image {
+  flex-basis: 50%;
+}
+
+.productInfo {
+  flex-basis: 50%;
+  padding: 20px;
+  max-width: 400px;
+}
+
+.condition {
+  @extend %secondaryText;
+}
+
+.title {
+  font-size: 20px
+}
+
+.soldQty {
+  @extend %secondaryText;
+}
+
+.price {
+  font-size: 45px;
+  display: flex;
+  & span {
+    font-size: 18px;
+    padding-top: 10px;
+    letter-spacing: 1.2px;
+  }
+}
+
+.freeShipping {
+  color: $green;
+  font-weight: 600;
+  display: block;
+}
+
+.btn {
+  background-color: $primary-color;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 20px 0;
+  width: 100%;
+  padding: 6px 10px;
+  border: none;
+}
+
+.description {
+  & *:first-child {
+    font-weight: normal;
+    margin: 20px 0;
+    font-size: 24px;
+  }
+  & *:last-child {
+    color: $secondary-text;
+  }
+}
