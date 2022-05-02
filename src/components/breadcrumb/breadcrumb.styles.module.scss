@@ -1,0 +1,9 @@
+@import '../../common/styles/variables.module.scss';
+
+.list {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
+  color: #a1a1a1;
+}

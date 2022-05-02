@@ -1,22 +1,26 @@
-interface Response {
+export interface Response {
   author: {
-    name: String;
-    lastname: String;
+    name: string;
+    lastname: string;
   };
-  categories: String[];
+  categories: string[];
   items: [
     {
-      id: String;
-      title: String;
-      price: { currency: String; amount: Number; decimals: Number };
-      picture: String;
-      condition: String;
-      free_shipping: Boolean;
+      id: string;
+      title: string;
+      price: { currency: string; amount: number; decimals: number };
+      picture: string;
+      condition: string;
+      free_shipping: boolean;
     }
   ];
 }
 
-export default async function handler(req, res) {
+export interface Error {
+  error: any;
+}
+
+export default async function handler(req, res): Promise<Response | Error> {
   const search = req.query.q;
   const queryParam = search ? `?q=${search}` : "";
 
@@ -30,9 +34,9 @@ export default async function handler(req, res) {
     return res.status(200).json(error);
   }
 
-  const categories = data.available_filters.find(
-    ({ id }) => id === "category"
-  )?.values;
+  const categories = data.available_filters
+    .find(({ id }) => id === "category")
+    ?.values.map((category) => category.name);
 
   const categoriesSortedByResults = categories?.sort((a, b) => {
     if (a.results > b.results) {
