@@ -19,11 +19,12 @@ html, body {
 /*
   Typographic tweaks!
   4. Add accessible line-height
-  5. Improve text rendering
+  5. Improve text rendering and add default font family
 */
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Poppins', sans-serif;
 }
 
 /*
