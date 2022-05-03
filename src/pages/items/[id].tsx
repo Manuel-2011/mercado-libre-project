@@ -14,7 +14,7 @@ const ProductDetailPage: FC<Props> = ({ data }) => {
 
   return (
     <>
-      <Breadcrumb items={[data.item.category]} />
+      <Breadcrumb items={data.item.categories} />
       <ProductDetail item={data.item} />
     </>
   );

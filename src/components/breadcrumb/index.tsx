@@ -15,7 +15,7 @@ const Breadcrumb: FC<Props> = ({ items }) => {
           return (
             <li key={item}>
               <span>{item}</span>
-              {index < itemsToRender.length - 1 && <span>|</span>}
+              {index < itemsToRender.length - 1 && <span>&gt;</span>}
             </li>
           );
         })}

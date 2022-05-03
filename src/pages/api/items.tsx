@@ -34,26 +34,16 @@ export default async function handler(req, res): Promise<Response | Error> {
     return res.status(200).json(error);
   }
 
-  const categories = data.available_filters
+  const categories = data.filters
     .find(({ id }) => id === "category")
-    ?.values.map((category) => category.name);
-
-  const categoriesSortedByResults = categories?.sort((a, b) => {
-    if (a.results > b.results) {
-      return -1;
-    }
-    if (a.results < b.results) {
-      return 1;
-    }
-    return 0;
-  });
+    ?.values?.[0]?.path_from_root.map((category) => category.name);
 
   const parsedData: Response = {
     author: {
       name: "Manuel",
       lastname: "Mosquera",
     },
-    categories: categoriesSortedByResults || [],
+    categories: categories || [],
     items: data.results.map((item) => ({
       id: item.id,
       title: item.title,

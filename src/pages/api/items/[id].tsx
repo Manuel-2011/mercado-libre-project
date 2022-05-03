@@ -12,7 +12,7 @@ export interface Response {
     free_shipping: boolean;
     sold_quantity: Number;
     description: string;
-    category: null | string;
+    categories: string[];
   };
 }
 
@@ -42,15 +42,15 @@ export default async function handler(req, res): Promise<Response | Error> {
     description = "";
   }
 
-  let category;
+  let categories;
   try {
     const rawResponse = await fetch(
       `https://api.mercadolibre.com/categories/${data.category_id}`
     );
-    category = await rawResponse.json();
-    category = category.name;
+    categories = await rawResponse.json();
+    categories = categories.path_from_root.map((category) => category.name);
   } catch (error) {
-    category = null;
+    categories = null;
   }
 
   const parsedData: Response = {
@@ -66,7 +66,7 @@ export default async function handler(req, res): Promise<Response | Error> {
         amount: data.price,
         decimals: data.price % 1,
       },
-      category,
+      categories: categories || [],
       picture: data.thumbnail,
       condition: data.condition,
       free_shipping: data.shipping.free_shipping,
