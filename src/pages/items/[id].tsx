@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Response, Error } from "../api/items/[id]";
 import ProductDetail from "../../components/productDetail";
 import Breadcrumb from "../../components/breadcrumb";
+import { server } from "../../../config";
 
 interface Props {
   data: Response | Error;
@@ -24,7 +25,7 @@ export default ProductDetailPage;
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-  const res = await fetch(`http://localhost:3001/api/items/${id}`);
+  const res = await fetch(`${server}/api/items/${id}`);
   const data = await res.json();
 
   return {
