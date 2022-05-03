@@ -71,6 +71,7 @@
 }
 
 .description {
+  flex-basis: 100%;
   & *:first-child {
     font-weight: normal;
     margin: 20px 0;
