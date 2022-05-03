@@ -11,7 +11,7 @@ describe("Searching for products", () => {
 
   const text = "play station";
   it("The input let you type text", () => {
-    cy.get("input").type(text);
+    cy.get("input").type(text).should("have.value", text);
   });
 
   it("Search for a product", () => {
