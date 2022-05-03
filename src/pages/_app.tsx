@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import SearchBar from "../components/searchBar";
 import styles from "./_app.styles.module.scss";
 import "../common/styles/reset.styles.scss";
+import Head from "next/head";
 
 export default function MainLayout({ Component, pageProps }) {
   const router = useRouter();
@@ -11,12 +12,18 @@ export default function MainLayout({ Component, pageProps }) {
   };
 
   return (
-    <main className={styles.mainLayout}>
-      <SearchBar
-        placeholder="Nunca dejes de buscar"
-        onClick={goToProductsList}
-      />
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Head>
+        <title>Mercado Libre</title>
+        <link rel="shortcut icon" href="/favicon.svg" />
+      </Head>
+      <main className={styles.mainLayout}>
+        <SearchBar
+          placeholder="Nunca dejes de buscar"
+          onClick={goToProductsList}
+        />
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }
