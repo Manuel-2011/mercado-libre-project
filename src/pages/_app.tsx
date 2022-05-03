@@ -17,13 +17,13 @@ export default function MainLayout({ Component, pageProps }) {
         <title>Mercado Libre</title>
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
-      <main className={styles.mainLayout}>
+      <div className={styles.mainLayout}>
         <SearchBar
           placeholder="Nunca dejes de buscar"
           onClick={goToProductsList}
         />
         <Component {...pageProps} />
-      </main>
+      </div>
     </>
   );
 }

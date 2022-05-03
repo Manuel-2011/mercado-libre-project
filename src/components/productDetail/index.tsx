@@ -14,7 +14,7 @@ const ProductDetail: FC<Props> = ({ item, handleClick }) => {
         <img src={item.picture} alt={item.title} className={styles.image} />
         <div aria-label="main product info" className={styles.productInfo}>
           <span className={styles.condition} aria-label="condition">
-            {item.condition} -{" "}
+            {item.condition} |{" "}
           </span>
           <span className={styles.soldQty} aria-label="sold quantity">
             {`${item.sold_quantity} vendido${

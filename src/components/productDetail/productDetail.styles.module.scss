@@ -12,6 +12,7 @@
   background-color: #ffffff;
   padding: 40px;
   margin-bottom: 70px;
+  border-radius: 5px;
 }
 
 .image {
@@ -34,6 +35,7 @@
 
 .soldQty {
   @extend %secondaryText;
+  text-transform: lowercase;
 }
 
 .price {
@@ -56,12 +58,16 @@
   background-color: $primary-color;
   color: #ffffff;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   margin: 20px 0;
   width: 100%;
-  padding: 6px 10px;
+  padding: 10px;
   border: none;
+  transition: all .2s;
+  &:hover {
+    background-color: #2968c8;
+  }
 }
 
 .description {

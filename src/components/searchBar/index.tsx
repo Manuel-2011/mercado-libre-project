@@ -18,7 +18,7 @@ const SearchBar: FC<Props> = ({ placeholder, onClick }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <Image
         data-testid="logo"
         src="/images/mercado-libre-logo.png"
@@ -42,7 +42,7 @@ const SearchBar: FC<Props> = ({ placeholder, onClick }) => {
           <SearchIcon />
         </button>
       </form>
-    </div>
+    </header>
   );
 };
 

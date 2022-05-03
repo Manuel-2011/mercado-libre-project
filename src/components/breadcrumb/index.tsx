@@ -13,10 +13,12 @@ const Breadcrumb: FC<Props> = ({ items }) => {
       <ul className={styles.list}>
         {itemsToRender.map((item, index) => {
           return (
-            <li key={item}>
-              <span>{item}</span>
+            <div key={item}>
+              <li>
+                <span>{item}</span>
+              </li>
               {index < itemsToRender.length - 1 && <span>&gt;</span>}
-            </li>
+            </div>
           );
         })}
       </ul>
