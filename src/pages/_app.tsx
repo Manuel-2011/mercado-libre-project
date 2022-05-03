@@ -8,7 +8,7 @@ export default function MainLayout({ Component, pageProps }) {
   const router = useRouter();
 
   const goToProductsList = (query: string) => {
-    router.push(`/items?q=${encodeURIComponent(query)}`);
+    router.push(`/items?search=${encodeURIComponent(query)}`);
   };
 
   return (

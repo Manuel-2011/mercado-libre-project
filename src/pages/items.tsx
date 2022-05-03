@@ -23,8 +23,8 @@ const Items: FC<Props> = ({ data }) => {
 export default Items;
 
 export async function getServerSideProps({ query }) {
-  const { q } = query;
-  const res = await fetch(`http://localhost:3001/api/items?q=${q}`);
+  const { search } = query;
+  const res = await fetch(`http://localhost:3001/api/items?q=${search}`);
   const data: Promise<Response | Error> = await res.json();
 
   return {
