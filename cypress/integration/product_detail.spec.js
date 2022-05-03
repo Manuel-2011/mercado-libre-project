@@ -17,7 +17,7 @@ describe("Product detail", () => {
   it("Shows the bradcrumb with the product category", () => {
     cy.get("nav li").should("have.length", item.categories.length);
 
-    for (let category in item.categories) {
+    for (const category of item.categories) {
       cy.get("nav li").contains(category);
     }
   });

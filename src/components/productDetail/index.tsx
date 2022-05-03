@@ -38,7 +38,7 @@ const ProductDetail: FC<Props> = ({ item, handleClick }) => {
         {item.description && (
           <div className={styles.description}>
             <h4>Descripción del producto</h4>
-            <p>{item.description}</p>
+            <p data-testid="product-description">{item.description}</p>
           </div>
         )}
       </section>
