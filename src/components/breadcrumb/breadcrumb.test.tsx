@@ -21,7 +21,7 @@ describe("SearchBar", () => {
     expect(nav).toBeInTheDocument();
   });
 
-  it("renders the four main items", () => {
+  it("renders all the items passed to it", () => {
     render(
       <Breadcrumb
         items={[
@@ -36,6 +36,6 @@ describe("SearchBar", () => {
 
     const items = screen.getAllByRole("listitem");
 
-    expect(items.length).toBe(4);
+    expect(items.length).toBe(5);
   });
 });
