@@ -3,4 +3,4 @@ const port = process.env.PORT;
 
 export const server = dev
   ? `http://localhost:${port}`
-  : "https://your_deployment.server.com";
+  : "https://mercado-libre-project.vercel.app";
