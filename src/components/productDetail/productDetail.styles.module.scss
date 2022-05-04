@@ -13,16 +13,28 @@
   padding: 40px;
   margin-bottom: 70px;
   border-radius: 5px;
+  @media (max-width: $sm) {
+    padding: 20px;
+    justify-content: flex-start;
+  }
 }
 
 .image {
   flex-basis: 50%;
+  @media (max-width: $sm) {
+    flex-basis: 100%;
+  }
 }
 
 .productInfo {
   flex-basis: 50%;
   padding: 20px;
   max-width: 400px;
+  @media (max-width: $sm) {
+    flex-basis: 100%;
+    padding: 20px 0;
+    max-width: 100%;
+  }
 }
 
 .condition {
@@ -67,6 +79,11 @@
   transition: all .2s;
   &:hover {
     background-color: #2968c8;
+  }
+  @media (max-width: $sm) {
+    display: block;
+    max-width: 600px;
+    margin: 20px auto;
   }
 }
 
