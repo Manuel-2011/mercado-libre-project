@@ -42,15 +42,15 @@ export default async function handler(req, res): Promise<Response | Error> {
     description = "";
   }
 
-  let categories;
+  let category;
   try {
     const rawResponse = await fetch(
       `https://api.mercadolibre.com/categories/${data.category_id}`
     );
-    categories = await rawResponse.json();
-    categories = categories.path_from_root.map((category) => category.name);
+    category = await rawResponse.json();
+    category = category?.name;
   } catch (error) {
-    categories = null;
+    category = null;
   }
 
   const parsedData: Response = {
@@ -66,7 +66,7 @@ export default async function handler(req, res): Promise<Response | Error> {
         amount: data.price,
         decimals: data.price % 1,
       },
-      categories: categories || [],
+      categories: category ? [category] : [],
       picture: data.thumbnail,
       condition: data.condition,
       free_shipping: data.shipping.free_shipping,

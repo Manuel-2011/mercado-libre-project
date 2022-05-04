@@ -33,17 +33,20 @@ export default async function handler(req, res): Promise<Response | Error> {
   } catch (error) {
     return res.status(200).json(error);
   }
+  const availableCategories = data.available_filters
+    .find((filter) => filter.id === "category")
+    ?.values.map((category) => category.name);
 
-  const categories = data.filters
-    .find(({ id }) => id === "category")
-    ?.values?.[0]?.path_from_root.map((category) => category.name);
+  const resultsCategory = data.filters.find(
+    ({ id }) => id === "category"
+  )?.name;
 
   const parsedData: Response = {
     author: {
       name: "Manuel",
       lastname: "Mosquera",
     },
-    categories: categories || [],
+    categories: availableCategories || resultsCategory || [],
     items: data.results.map((item) => ({
       id: item.id,
       title: item.title,
