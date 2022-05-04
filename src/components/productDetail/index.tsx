@@ -21,9 +21,9 @@ const ProductDetail: FC<Props> = ({ item, handleClick }) => {
               item.sold_quantity > 1 ? "s" : ""
             }`}
           </span>
-          <h2 aria-label="product name" className={styles.title}>
+          <h1 aria-label="product name" className={styles.title}>
             {item.title}
-          </h2>
+          </h1>
           <span aria-label="product price" className={styles.price}>
             $ {Math.floor(item.price.amount).toLocaleString("en-US")}{" "}
             <span>{item.price.decimals.toFixed(2).replace("0.", "")}</span>

@@ -1,0 +1,6 @@
+# Block all crawlers for accesing the apis directly
+User-agent: *
+Disallow: /api/
+
+User-agent: *
+Allow: /

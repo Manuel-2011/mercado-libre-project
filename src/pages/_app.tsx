@@ -16,6 +16,7 @@ export default function MainLayout({ Component, pageProps }) {
       <Head>
         <title>Mercado Libre</title>
         <link rel="shortcut icon" href="/favicon.svg" />
+        <meta name="robots" content="index,follow" />
       </Head>
       <div className={styles.mainLayout}>
         <SearchBar

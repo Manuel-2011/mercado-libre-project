@@ -4,6 +4,7 @@ import Breadcrumb from "../components/breadcrumb";
 import ProductsList from "../components/productsList";
 import { server } from "../../config";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 interface Props {
   data: Response | Error;
@@ -31,6 +32,11 @@ const Items: FC<Props> = ({ data, search }) => {
 
   return (
     <>
+      {search && (
+        <Head>
+          <title>{search} | Mercado Libre</title>
+        </Head>
+      )}
       <Breadcrumb items={data.categories} handleClick={handleClick} />
       <ProductsList data={data} />
     </>

@@ -32,7 +32,7 @@ describe("Product detail", () => {
     cy.get("[data-testid='product-detail']").contains(item.sold_quantity);
 
     cy.get("[data-testid='product-detail']").contains(
-      item.price.amount.toLocaleString("en-US")
+      Math.floor(item.price.amount).toLocaleString("en-US")
     );
 
     if (item.free_shipping) {
