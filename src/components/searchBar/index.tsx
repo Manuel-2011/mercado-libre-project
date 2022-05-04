@@ -38,7 +38,11 @@ const SearchBar: FC<Props> = ({ placeholder, onClick }) => {
           onChange={(e) => setSearch(e.target.value)}
           data-testid="search-input"
         />
-        <button className={styles.searchSubmit} type="submit">
+        <button
+          className={styles.searchSubmit}
+          type="submit"
+          aria-label="search"
+        >
           <SearchIcon />
         </button>
       </form>

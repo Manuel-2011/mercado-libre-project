@@ -35,6 +35,10 @@ const Items: FC<Props> = ({ data, search }) => {
       {search && (
         <Head>
           <title>{search} | Mercado Libre</title>
+          <meta
+            name="description"
+            content={`Listado de productos para la busqueda: ${search}.`}
+          />
         </Head>
       )}
       <Breadcrumb items={data.categories} handleClick={handleClick} />
