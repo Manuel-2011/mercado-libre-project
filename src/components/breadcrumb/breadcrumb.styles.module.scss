@@ -9,6 +9,7 @@
   font-size: 14px;
   & div {
     display: flex;
+    align-items: center;
     gap: 10px;
   }
   & li {
@@ -19,5 +20,12 @@
     &:hover {
       color: $main-text;
     }
+  }
+}
+
+.noHoverEffect {
+  &:hover {
+    color: $secondary-text !important;
+    cursor: initial !important;
   }
 }

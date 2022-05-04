@@ -14,6 +14,7 @@ export interface Response {
       free_shipping: boolean;
     }
   ];
+  categories_filter: [{ id: string; name: string }];
 }
 
 export interface Error {
@@ -22,31 +23,36 @@ export interface Error {
 
 export default async function handler(req, res): Promise<Response | Error> {
   const search = req.query.q;
+  const category = req.query.category;
   const queryParam = search ? `?q=${search}` : "";
+  const filterParam = category ? `&category=${category}` : "";
 
   let data;
   try {
     const rawResponse = await fetch(
-      `https://api.mercadolibre.com/sites/MLA/search${queryParam}`
+      `https://api.mercadolibre.com/sites/MLA/search${queryParam}${filterParam}`
     );
     data = await rawResponse.json();
   } catch (error) {
     return res.status(200).json(error);
   }
-  const availableCategories = data.available_filters
-    .find((filter) => filter.id === "category")
-    ?.values.map((category) => category.name);
+  const availableCategories = data.available_filters.find(
+    (filter) => filter.id === "category"
+  )?.values;
+  const availableCategoriesNames = availableCategories?.map(
+    (category) => category.name
+  );
 
-  const resultsCategory = data.filters.find(
-    ({ id }) => id === "category"
-  )?.name;
+  const resultsCategory = data.filters
+    .find(({ id }) => id === "category")
+    ?.values.map((category) => category.name);
 
   const parsedData: Response = {
     author: {
       name: "Manuel",
       lastname: "Mosquera",
     },
-    categories: availableCategories || resultsCategory || [],
+    categories: availableCategoriesNames || resultsCategory || [],
     items: data.results.map((item) => ({
       id: item.id,
       title: item.title,
@@ -59,6 +65,7 @@ export default async function handler(req, res): Promise<Response | Error> {
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
     })),
+    categories_filter: availableCategories || [],
   };
 
   res.status(200).json(parsedData);

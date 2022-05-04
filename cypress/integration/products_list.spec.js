@@ -56,4 +56,19 @@ describe("Listing the items", () => {
 
     cy.url().should("include", `/items/${firstItem.id}`);
   });
+
+  it("Filter by category", () => {
+    if (pageProps.data.categories.length > 1) {
+      const firstCategory = pageProps.data.categories[0];
+      const firstCategoryId = pageProps.data.categories_filter.find(
+        (category) => category.name === firstCategory
+      ).id;
+
+      cy.get("nav li").contains(firstCategory).click();
+
+      cy.get("nav li").should("have.length", 1);
+
+      cy.url().should("include", `category=${firstCategoryId}`);
+    }
+  });
 });
