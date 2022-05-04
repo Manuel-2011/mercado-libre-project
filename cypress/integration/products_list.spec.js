@@ -9,6 +9,14 @@ describe("Listing the items", () => {
     });
   });
 
+  it("Shows the bradcrumb with the search category", () => {
+    cy.get("nav li").should("have.length", pageProps.data.categories.length);
+
+    for (const category of pageProps.data.categories) {
+      cy.get("nav li").contains(category);
+    }
+  });
+
   it("Shows the first 4 items", () => {
     const maxLength =
       pageProps.data.items.length > 4 ? 4 : pageProps.data.items.length;
